@@ -13,12 +13,12 @@ public class Move : MonoBehaviour {
 	void Update () {
         Rigidbody rb = GetComponent<Rigidbody>();
         if (Input.GetKey(KeyCode.A))
-            rb.AddForce(new Vector3(-10,0,0));
+            rb.AddTorque(new Vector3(0,-10,0) * 3);
         if (Input.GetKey(KeyCode.D))
-            rb.AddForce(Vector3.right * 10);
+            rb.AddTorque(new Vector3(0, 10, 0) * 3);
         if (Input.GetKey(KeyCode.W))
-            rb.AddForce(Vector3.forward * 10);
+            rb.AddForce(Vector3.forward * 20);
         if (Input.GetKey(KeyCode.S))
-            rb.AddForce(Vector3.back * 10);
+            rb.AddRelativeForce(Vector3.right * 5);
     }
 }
