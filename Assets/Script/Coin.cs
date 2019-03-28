@@ -18,6 +18,7 @@ public class Coin : MonoBehaviour {
 	void Update () {
         Rigidbody rb = GetComponent<Rigidbody>();
         rb.AddTorque(new Vector3(0, 10, 0) * 2);
+        //transform.position = new Vector3(GetRandomNumber(-4.6f, 4f),transform.position.y, transform.position.z);
     }
 
     //Collect Coin and Deactivate
@@ -28,6 +29,7 @@ public class Coin : MonoBehaviour {
             leScoreManager.IncScore(1);//Increase Score by 1
             coinSound.Play();
             gameObject.SetActive(false);//Coin Dissapears
+
         }
     }
 

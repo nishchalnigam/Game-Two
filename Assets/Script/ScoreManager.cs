@@ -9,6 +9,7 @@ public class ScoreManager : MonoBehaviour {
     public Text healthText;
     
     public GameObject deathScreen;
+    public GameObject winScreen;
 
     private int coins = 0;
     private int playerHealth = 4;
@@ -55,7 +56,10 @@ public class ScoreManager : MonoBehaviour {
             deathScreen.SetActive(true);
             healthText.text = "Health: GameOver";
         }
-
+        if (coins > 30)
+        {
+            winScreen.SetActive(true); 
+        }
     }
 
     //Increase health and resume

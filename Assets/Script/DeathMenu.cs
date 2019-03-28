@@ -15,7 +15,7 @@ public class DeathMenu : MonoBehaviour {
 
     public void RestartGame()
     {
-        Time.timeScale = 1f;
+        //Time.timeScale = 1f;
         Application.LoadLevel("SampleScene");
     }
 

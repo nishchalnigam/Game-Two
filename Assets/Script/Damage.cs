@@ -10,7 +10,7 @@ public class Damage : MonoBehaviour {
     public AudioSource damage;
     GameObject target;
     public Transform Player;
-    public float movementSpeed = 4;
+    public float movementSpeed = 40;
     private bool canChase = false;
     public bool CanChase
     {

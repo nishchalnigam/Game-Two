@@ -10,7 +10,7 @@ public class ProcWallGenerator : MonoBehaviour {
     private int tileToGenerate = 0;
     // Use this for initialization
     void Start () {
-        for(int i =0;i<100;i++)
+        for(int i =0;i<200;i++)
         {
             GameObject obj = Instantiate(wall);
             obj.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 5f);
