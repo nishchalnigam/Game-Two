@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = System.Random;
 
 public class Coin : MonoBehaviour {
 
@@ -10,6 +11,7 @@ public class Coin : MonoBehaviour {
     void Start () {
         leScoreManager = FindObjectOfType<ScoreManager>();
         coinSound = GameObject.Find("CoinSound").GetComponent<AudioSource>();
+        transform.position = new Vector3(transform.position.x + GetRandomNumber(0f, 4f), transform.position.y, transform.position.z);
     }
 	
 	// Update is called once per frame
@@ -27,5 +29,11 @@ public class Coin : MonoBehaviour {
             coinSound.Play();
             gameObject.SetActive(false);//Coin Dissapears
         }
+    }
+
+    public float GetRandomNumber(float minimum, float maximum)
+    {
+        Random random = new Random();
+        return (float)random.NextDouble() * (maximum - minimum) + minimum;
     }
 }

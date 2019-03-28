@@ -7,7 +7,7 @@ public class ScoreManager : MonoBehaviour {
 
     public Text coinText;
     public Text healthText;
-    private Animator animator;
+    
     public GameObject deathScreen;
 
     private int coins = 0;
@@ -43,9 +43,7 @@ public class ScoreManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        animator = GetComponent<Animator>();
         //deathScreen = GameObject.Find("DeathMenu");//.GetComponent<GameObject>();
-
     }
 	
 	// Update is called once per frame
@@ -53,13 +51,30 @@ public class ScoreManager : MonoBehaviour {
 
         if (playerHealth <= 0)
         {
-            animator.SetBool("Explodes", true);
+            Time.timeScale = 0f;
             deathScreen.SetActive(true);
             healthText.text = "Health: GameOver";
         }
 
     }
 
+    //Increase health and resume
+    public void ExtraLife()
+    {
+
+        if (playerHealth <= 0)
+        {
+            Time.timeScale = 1f;
+            deathScreen.SetActive(false);
+            playerHealth = 2;
+            healthText.text = "Health: " + playerHealth.ToString();
+            coins -= 20;
+            coinText.text = "Coins: " + coins.ToString();
+            Damage d = FindObjectOfType<Damage>();
+            d.CanChase = false;
+        }
+
+    }
     //This will increase the score
     public void IncScore(int score)
     {

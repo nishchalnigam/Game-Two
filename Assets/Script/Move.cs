@@ -17,8 +17,10 @@ public class Move : MonoBehaviour {
         if (Input.GetKey(KeyCode.D))
             rb.AddTorque(new Vector3(0, 10, 0) * 3);
         if (Input.GetKey(KeyCode.W))
-            rb.AddForce(Vector3.forward * 20);
+            rb.AddRelativeForce(Vector3.left * 20);
         if (Input.GetKey(KeyCode.S))
             rb.AddRelativeForce(Vector3.right * 5);
+
+
     }
 }

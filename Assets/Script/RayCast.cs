@@ -25,7 +25,7 @@ public class RayCast : MonoBehaviour {
 
         if(Physics.Raycast(raycastcam.transform.position,raycastcam.transform.forward,out hit))
         {
-            Debug.Log(hit.transform.name);
+            //Debug.Log(hit.transform.name);
 
             if (hit.transform.name.Equals("Player"))
             {

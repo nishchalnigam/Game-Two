@@ -8,17 +8,46 @@ public class Damage : MonoBehaviour {
     public ScoreManager leScoreManager;
     public List<Sprite> sprites;
     public AudioSource damage;
+    GameObject target;
+    public Transform Player;
+    public float movementSpeed = 4;
+    private bool canChase = false;
+    public bool CanChase
+    {
+        get
+        {
+            return canChase;
+        }
 
+        set
+        {
+            canChase = value;
+        }
+    }
+    Rigidbody rb;
     // Use this for initialization
-    void Start () {
+    void Start ()
+    {
+        //Player = GameObject.FindGameObjectWithTag("Player").transform;
+        rb = GetComponent<Rigidbody>();
         damage = GameObject.Find("Collision").GetComponent<AudioSource>();
         leScoreManager = FindObjectOfType<ScoreManager>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+        //Player.position = transform.LookAt()
+        if (canChase)
+        {
+            Chase();
+        }
+    }
+
+    void Chase()
+    {
+        transform.LookAt(Player.transform);
+        transform.position += transform.forward * movementSpeed * Time.deltaTime;
+    }
 
     void OnCollisionEnter(Collision collision)
     {
@@ -32,6 +61,12 @@ public class Damage : MonoBehaviour {
             { 
                 uiImage.sprite = sprites[leScoreManager.PlayerHealth];
             }
+            
+        }
+
+        if(collision.gameObject.name == "Plane")
+        {
+            canChase = true;
         }
     }
     
